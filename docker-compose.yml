@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=${RENDER_EXTERNAL_HOSTNAME}
+      - NODE_ENV=production
+    restart: always
+
+  evolution_api:
+    image: atendimentos/evolution-api:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - AUTHENTICATION_API_KEY=andres_segura1
+    restart: always
